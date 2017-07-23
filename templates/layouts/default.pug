@@ -1,0 +1,166 @@
+include ../mixins/flash-messages
+
+block var
+
+doctype html
+html
+
+	//- HTML HEADER
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		
+		if typeof data.post === 'undefined' || data.post === null
+			meta(name='description', content!=description)
+			meta(name='keywords', content!=keywords)
+			meta(name='author', content!=author)
+			//- Schema.org markup for Google+
+			meta(itemprop='name', content!=title)
+			meta(itemprop='description', content!=description)
+			meta(itemprop='image', content='/images/logo.png')
+
+			//- Twitter Card data
+			meta(name='twitter:card', content='summary_large_image')
+			meta(name='twitter:site', content='@ray_r9')
+			meta(name='twitter:title', content!=title)
+			meta(name='twitter:description', content!=description)
+			meta(name='twitter:creator', content='@ray_r9')
+
+			//- Twitter summary card with large image must be at least 280x150px
+			meta(name='twitter:image:src', content='/images/logo.png')
+		
+			//- Open Graph data
+			meta(property='og:title', content!=title)
+			meta(property='og:type', content='article')
+			meta(property='og:url', content='http://www.rayrinaldy.com/')
+			meta(property='og:image', content='/images/logo.png')
+			meta(property='og:description', content!=description)
+			meta(property='og:site_name', content!=description)
+			meta(property='article:published_time', content='2017-01-04T05:59:00+08:00')
+			meta(property='article:modified_time', content='2017-01-04T19:08:47+08:00')
+			meta(property='article:section', content='Article Section')
+			meta(property='article:tag', content='Article Tag')
+			meta(property='fb:admins', content='1605949105')
+
+		else
+			meta(name='description', content!=data.post.meta.description || data.post.content.brief)
+			each keywords in data.post.categories
+				meta(name='keywords', content!=keywords.name)
+			meta(name='author', content!=data.post.author.name.first + ' ' + data.post.author.name.last)
+			//- Schema.org markup for Google+
+			meta(itemprop='name', content!=data.post.title)
+			meta(itemprop='description', content!=data.post.meta.description || data.post.content.brief)
+			meta(itemprop='image', content=data.post._.image.fit(120,120))
+
+			//- Twitter Card data
+			meta(name='twitter:card', content='summary_large_image')
+			meta(name='twitter:site', content='@ray_r9')
+			meta(name='twitter:title', content!=data.post.title)
+			meta(name='twitter:description', content!=data.post.meta.description || data.post.content.brief)
+			meta(name='twitter:creator', content!=data.post.author.name.first)
+
+			//- Twitter summary card with large image must be at least 280x150px
+			meta(name='twitter:image:src', content=data.post._.image.fit(120,120))
+		
+			//- Open Graph data
+			meta(property='og:title', content!=data.post.title)
+			meta(property='og:type', content='article')
+			meta(property='og:url', content!=data.post.fullPostUrl)
+			meta(property='og:image', content=data.post._.image.fit(120,120))
+			meta(property='og:description', content!=data.post.meta.description)
+			meta(property='og:site_name', content!=description)
+			meta(property='article:published_time', content!=data.post.publishedDate)
+			meta(property='article:modified_time', content!=data.post.publishedDate)
+			//- meta(property='article:section', content='Article Section')
+			meta(property='article:tag', content!=name)
+			//- meta(property='fb:admins', content='1605949105')
+			
+
+		meta(name='theme-color', content='#db0011')
+
+		title= title || 'Hegar Sumber Kreasi'
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+
+		//- Customise the stylesheet for your site by editing /public/styles/site.sass
+		link(href="/styles/slick.css", rel="stylesheet")
+		link(href="/styles/slick-theme.css", rel="stylesheet")
+		link(href="/styles/site.css", rel="stylesheet")
+
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
+
+		//- This file provides the default styling for the KeystoneJS Content Editor
+		if user && user.canAccessKeystone
+			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+
+		block css
+
+		block head
+
+	body
+		nav(role="navigation")#mainNav.navbar.navbar-default.navbar-fixed-top
+			.container-fluid
+				//- Brand and toggle get grouped for better mobile display
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='/') 
+						.brand-title Hegar Sumber Kreasi
+						img(src="/images/logo.png", alt="Hegar Sumber Kreasi")
+
+				//- Collect the nav links, forms, and other content for toggling
+				#navbar-collapse-1.collapse.navbar-collapse
+					ul.nav.navbar-nav.navbar-right
+						each link in navLinks
+							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+
+		//- The Intro block appears above flash messages (used for temporary information display)
+		block intro
+
+		//- Flash messages allow you to display once-off status messages to users, e.g. form validation errors, success messages, etc.
+		+flash-messages(messages)
+
+		block content
+
+		#partnership.text-center
+			.container-fluid
+				.row
+					.col-sm-10.col-sm-offset-1
+						hr
+						.partnership-title In Partnership with
+						.row.slider-parent
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							.col-sm-4.slider-child
+								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
+							
+
+		#footer 
+			.container-fluid
+				.row
+					.col-md-10.col-md-offset-1
+						.footer-text Copyright© Hegar Sumber Kreasi 2017. All Rights Reserved.
+
+
+		//- JAVASCRIPT
+		script(src='/js/jquery/jquery.js')
+		script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
+		script(src='/js/lib/slick.min.js')
+		script(src='/js/script.js')
+
+		//- The KeystoneJS Content Editor provides support for ks-editable data attributes, which generate links to edit content for users who can access Keystone
+		if user && user.canAccessKeystone
+			script(src='/keystone/js/content/editor.js')
+
+		block js

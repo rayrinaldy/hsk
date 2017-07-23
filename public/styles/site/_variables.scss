@@ -1,0 +1,99 @@
+// Override Bootstrap variables in this file, e.g.
+
+$font-size-base: 14px;
+
+// ••••••••••••••••••••••••••••••••••••••••••//
+// 
+//            DEFAULT SETTINGS
+// 
+// ••••••••••••••••••••••••••••••••••••••••••//
+@mixin bp($point) {
+    @if $point == max-xss {
+        @media (max-width: 479px) {
+            @content;
+        }
+    }
+    @else if $point == min-xss {
+        @media (min-width: 480px) {
+            @content;
+        }
+    }
+    @else if $point == max-xsm {
+        @media (max-width: 599px) {
+            @content;
+        }
+    }
+    @else if $point == min-xsm {
+        @media (min-width: 600px) {
+            @content;
+        }
+    }
+    @else if $point == max-sm {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $point == min-sm {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @else if $point == max-md {
+        @media (max-width: 991px) {
+            @content;
+        }
+    }
+    @else if $point == min-md {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $point == max-lg {
+        @media (max-width: 1199px) {
+            @content;
+        }
+    }
+    @else if $point == min-lg {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $point == max-lgr {
+        @media (max-width: $siteMaxWidth - 1) {
+            @content;
+        }
+    }
+    @else if $point == min-lgr {
+        @media (min-width: $siteMaxWidth) {
+            @content;
+        }
+    }
+}
+// ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+title {
+    font-weight: 500;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    // max-width: 1400px;
+    // height: 1900px;
+    margin: 0 auto;
+    // padding-top: 60px;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
