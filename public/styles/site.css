@@ -6267,7 +6267,8 @@ a {
   font-weight: bold;
   padding-top: 10px;
   font-size: 1.3em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: left; }
   .project-wrapper .project-title a {
     color: #800303; }
     .project-wrapper .project-title a:hover {
