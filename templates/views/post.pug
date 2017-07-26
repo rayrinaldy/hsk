@@ -43,7 +43,7 @@ block content
 							.status= data.post.project.status
 						.post
 							if data.post.image.exists
-								.image-wrap: img(src=data.post._.heroImage.fit(750,450)).img-responsive
+								.image-wrap: img(src=data.post._.image.fit(750,450)).img-responsive
 							!= data.post.content.full
 
 					.col-md-3

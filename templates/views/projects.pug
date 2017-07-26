@@ -18,7 +18,7 @@ mixin post(post)
 		.wrapper.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 			.card.radius.shadowDepth1
 				.card__image.border-tlr-radius
-					img.img-responsive.border-tlr-radius(src=post._.heroImage.fit(500,250))
+					img.img-responsive.border-tlr-radius(src=post._.image.fit(500,250))
 				.card__content.card__padding
 					.card__share
 						.card__social
