@@ -16,8 +16,8 @@ Post.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	// heroImage: { type: Types.CloudinaryImage },
-	image: { type: Types.CloudinaryImage },
+	heroImage: { type: Types.CloudinaryImage },
+	image: { type: Types.CloudinaryImages },
 	project: {
 		location: {type: String},
 		status: { type: Types.Select, options: 'finished, process, design', default: 'finished', index: true }, 
@@ -37,7 +37,7 @@ Post.schema.virtual('content.full').get(function () {
 });
 
 Post.schema.virtual('fullPostUrl').get(function() {
-    return keystone.get('baseUrl') + 'blog/post/' + this.slug;
+    return keystone.get('baseUrl') + 'projects/post/' + this.slug;
 });
 
 Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';

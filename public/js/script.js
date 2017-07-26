@@ -46,9 +46,6 @@ $(function() {
                     slidesToScroll: 1
                 }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
     });
 
@@ -57,4 +54,6 @@ $(function() {
         $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
         $(this).toggleClass('share-expanded');
     });
+
+    $('.wrapper.post').matchHeight();
 });

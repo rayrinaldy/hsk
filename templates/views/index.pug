@@ -10,7 +10,7 @@ block var
 mixin post(post)
 	.col-sm-6.col-md-4
 		.project-wrapper.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-			.project-img: img.img-responsive(src=post._.image.fit(500,250))
+			.project-img: img.img-responsive(src=post._.heroImage.fit(500,250))
 			.project-title: a(href='/projects/post/' + post.slug)= post.title
 			.project-date Posted 
 				if post.publishedDate
