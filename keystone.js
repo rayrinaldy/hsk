@@ -12,6 +12,7 @@ var keystone = require('keystone');
 keystone.init({
 	'name': 'Hegar Sumber Kreasi',
 	'brand': 'Hegar Sumber Kreasi',
+	'keywords': 'indonesia, company, indonesia, company',
 
 	'sass': 'public',
 	'static': 'public',
@@ -23,7 +24,13 @@ keystone.init({
 
 	'auto update': true,
 	'session': true,
-	'session store': 'connect-mongo',
+	// 'session store': 'connect-mongo',
+	'session store': 'connect-redis', // https://www.npmjs.com/package/connect-redis
+    'session store options': {
+        host: process.env.redisHost || 'localhost', // Redis server hostname
+        port: process.env.redisPort || 6379, // Redis server port
+        pass: process.env.redisPrimaryKey || process.env.redisSecondaryKey || null, // Password for Redis authentication
+    },
 	'auth': true,
 	'user model': 'User',
 

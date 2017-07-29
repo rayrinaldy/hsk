@@ -7,13 +7,16 @@ block var
 	- var author = 'Ray Rinaldy'
 	- var keywords = 'indonesia, company, indonesia, company'
 
+block js
+	script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
+
 
 block content
 	.header.not-home
 		.info.not-home
 				
 			h1= data.post.title
-			
+
 	section.content
 		article
 			p: a(href='/projects') &larr; back to projects
@@ -48,7 +51,8 @@ block content
 
 					.col-md-3
 						.share-article
-						a(href='https://twitter.com/intent/tweet?text!=data.post.title&url!=data.post.fullPostUrl', onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;") twitter
-						a(href='https://www.facebook.com/sharer/sharer.php?u!=data.post.fullPostUrl', onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;") fb
-						a(href='https://plus.google.com/share?url!=data.post.fullPostUrl', onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;") google
+						
+						a.twitter-share-button(href='https://twitter.com/share', data-text!=data.post.title, data-hashtags="", data-show-count='false', onclick="window.open(this.href, 'width=550,height=235');return false;") Tweet
+
+						.fb-share-button(data-href='http://www.your-domain.com/your-page.html', data-layout='button_count')
 
