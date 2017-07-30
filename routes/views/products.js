@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var async = require('async');
 
 exports = module.exports = function (req, res) {
 
@@ -7,13 +8,69 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'products';
+	locals.filters = {
+		category: req.params.category,
+	};
 	locals.data = {
 		posts: [],
 		categories: [],
 	};
 
+	// Load all categories
+	view.on('init', function (next) {
+
+		keystone.list('PostCategory').model.find().sort('name').exec(function (err, results) {
+
+			if (err || !results.length) {
+				return next(err);
+			}
+
+			locals.data.categories = results;
+
+			// Load the counts for each category
+			async.each(locals.data.categories, function (category, next) {
+
+				keystone.list('Products').model.count().where('categories').in([category.id]).exec(function (err, count) {
+					category.postCount = count;
+					next(err);
+				});
+
+			}, function (err) {
+				next(err);
+			});
+		});
+	});
+
+	// Load the current category filter
+	view.on('init', function (next) {
+
+		if (req.params.category) {
+			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function (err, result) {
+				locals.data.category = result;
+				next(err);
+			});
+		} else {
+			next();
+		}
+	});
+
+
+	view.on('init', function (next) {
+
+		var q = keystone.list('Products').model.find().sort('sortOrder').populate('categories');
+
+		if (locals.data.category) {
+			q.where('categories').in([locals.data.category]);
+		}
+
+		q.exec(function (err, results) {
+			locals.data.posts = results;
+			next(err);
+		});
+	});
+
 	// Load the products by sortOrder
-	view.query('products', keystone.list('Products').model.find().sort('sortOrder'));
+	// view.query('products', keystone.list('Products').sort('sortOrder'));
 
 	// Render the view
 	view.render('products');

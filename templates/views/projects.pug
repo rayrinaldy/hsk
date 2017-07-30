@@ -11,10 +11,19 @@ block css
 	link(href="/styles/font-awesome.min.css", rel="stylesheet")
 
 block js
-	script(src='/js/lib/height.js')
+	script(src='/js/lib/masonry.js')
+	script(src='/js/lib/imagesloaded.js')
+	script.
+		var $container = $('.masonry-container');
+		  $container.imagesLoaded( function () {
+		    $container.masonry({
+		      columnWidth: '.item-masonry',
+		      itemSelector: '.item-masonry'
+		    });
+		  });
 
 mixin post(post)
-	.col-sm-6
+	.col-sm-6.item-masonry
 		.wrapper.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 			.card.radius.shadowDepth1
 				.card__image.border-tlr-radius
@@ -76,7 +85,7 @@ block content
 						else
 							h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
 						.blog
-							.row
+							.row.masonry-container
 								each post in data.posts.results
 									+post(post)
 						
@@ -102,7 +111,7 @@ block content
 			if data.categories.length
 				.col-sm-4.col-md-3
 					h2 Categories
-					.list-group(style='margin-top: 70px;')
+					.list-group(style='margin-top: 20px;')
 						a(href='/projects', class=!data.category ? 'active' : false).list-group-item All Categories
 						each cat in data.categories
 							a(href='/projects/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name

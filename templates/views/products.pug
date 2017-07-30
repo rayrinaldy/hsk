@@ -6,6 +6,34 @@ block var
 	- var description = "We are an Indonesian company started in 1990 based in Bandung and we cover all areas of the Indonesia with a wide customer base. Our staff have experience to provide steel services to the Construction Industry"
 	- var author = 'Ray Rinaldy'
 	- var keywords = 'indonesia, company, indonesia, company'
+
+block css
+	link(href="/styles/jquery.fancybox.min.css", rel="stylesheet")
+
+block js
+	script(src='/js/lib/jquery.fancybox.min.js')
+	script(src='/js/lib/masonry.js')
+	script(src='/js/lib/isotope.js')
+	script(src='/js/lib/imagesloaded.js')
+	script.
+		$().fancybox({
+		  selector : '[data-fancybox="images"]',
+		  thumbs   : false,
+		  hash     : false,
+		});
+
+		var $container = $('.masonry-container');
+		  $container.imagesLoaded( function () {
+		    $container.masonry({
+		      columnWidth: '.gallery-image',
+		      itemSelector: '.gallery-image'
+		    });
+		  //-   $container.isotope({
+				//- itemSelector: '.gallery-image',
+				//- layoutMode: 'fitRows'
+		  //-   });
+		  });
+
 	
 block content
 	.header.not-home
@@ -14,21 +42,51 @@ block content
 			h1 OUR PRODUCTS
 			
 	section.content
-		.container
-			if products.length
-				each items in products
+		.container.gallery-section
+			if data.posts.length
+				//- -console.log(data.posts[0].categories)
+				if data.posts[0].categories.length
+					.btn-group
+						a.btn.btn-default(href='/products', class=!data.category ? 'active' : false, role="button").list-group-item All Categories
+						each cat in data.categories
+							a.btn.btn-default(href='/products/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false, role="button").list-group-item= cat.name
+					//- .list-group(style='margin-top: 20px;')
+					//- 	a(href='/products', class=!data.category ? 'active' : false).list-group-item All Categories
+					//- 	each cat in data.categories
+					//- 		a(href='/products/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+
+				each items in data.posts
 					h2= items.name
 						if items.publishedDate
 							.pull-right.text-muted= items._.publishedDate.format('Do MMM YYYY')
+
+					if items.content
+						p!=items.content.brief
 					
-					.row.gallery-images
+					//- if items.categories
+					//- 	each cat, cat_i in items.categories
+					//- 		p= (cat.name || "NA") + (cat_i < items.categories.length - 1 ? ' ,' : '')
+					//- 		-var klass = cat.name
+					//- 		//- if cat_i < items.categories.length - 1
+					//- 		//- 	| 
+					//- 		//- else
+					//- 		//- 	|  
+
+					.row.gallery-images(class="")
 						if items.heroImage.exists
-							.col-sm-4.col-md-4.gallery-image: img(src=items._.heroImage.limit(680,680)).img-rounded
-							.col-sm-8.col-md-8: .row
+							.col-sm-4.col-md-4.gallery-image: img(src=items._.heroImage.limit(680,680)).img-rounded.img-responsive
+							.col-sm-8.col-md-8: .row.masonry-container
 								each image in items.images
-									.col-xs-4.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+									.col-xs-4.col-sm-4.col-md-3.gallery-image
+										//- use data-caption to have caption to each image
+										a(href=image.url, data-fancybox='images')
+											img(src=image.url).img-rounded.img-responsive
+
 						else
 							each image in items.images
-								.col-xs-6.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+								.col-xs-6.col-sm-4.col-md-3.gallery-image
+									a(href=image.url, data-fancybox='images')
+										img(src=image.url).img-rounded
 			else
 				h3.text-muted There are no image galleries yet.
+		

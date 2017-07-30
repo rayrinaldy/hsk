@@ -519,7 +519,11 @@
   border-color: #800300;
 }
 
-// test material design
+// ••••••••••••••••••••••••••••••••//
+// 
+//   Project Cards Material Design
+// 
+// ••••••••••••••••••••••••••••••••//
 
 .border-tlr-radius {
   border-top-left-radius: 2px;
@@ -701,7 +705,11 @@
   color: #eee;
 }
 
-// Maps
+// ••••••••••••••••••••••••••••••••//
+// 
+//           Contact Us 
+// 
+// ••••••••••••••••••••••••••••••••//
 
 #maps-section{
   $main-text: #2d313f; // main text
@@ -846,7 +854,6 @@ $L:     1170px;
     color: #787878;
     cursor: pointer;
     display: table-cell;
-    font-family: 'Sanchez', serif;
     text-align: center;
     vertical-align: middle;
     width: 25%;
@@ -860,4 +867,33 @@ $L:     1170px;
 }
 }
 
+
+// ••••••••••••••••••••••••••••••••//
+// 
+//           Gallery Section
+// 
+// ••••••••••••••••••••••••••••••••//
+
+.gallery-section{
+  h2{
+    font-size: 1.8em !important;
+    @include bp(max-sm){
+      font-size: 1.5em;
+    }
+    .pull-right{
+      font-size: 0.8em;
+    }
+    &:after{
+      margin-top: 10px;
+    }
+  }
+}
+
+.gallery-images{
+  padding-top: 20px;
+}
+
+.gallery-image{
+  padding-bottom: 10px;
+}
 

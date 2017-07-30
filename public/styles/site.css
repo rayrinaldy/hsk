@@ -6583,7 +6583,6 @@ a {
     color: #787878;
     cursor: pointer;
     display: table-cell;
-    font-family: 'Sanchez', serif;
     text-align: center;
     vertical-align: middle;
     width: 25%;
@@ -6591,3 +6590,19 @@ a {
     transition: all 0.5s linear; }
   #maps-section .nav li:first-child {
     border-left: none; }
+
+.gallery-section h2 {
+  font-size: 1.8em !important; }
+  @media (max-width: 767px) {
+    .gallery-section h2 {
+      font-size: 1.5em; } }
+  .gallery-section h2 .pull-right {
+    font-size: 0.8em; }
+  .gallery-section h2:after {
+    margin-top: 10px; }
+
+.gallery-images {
+  padding-top: 20px; }
+
+.gallery-image {
+  padding-bottom: 10px; }
