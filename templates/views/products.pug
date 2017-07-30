@@ -88,5 +88,10 @@ block content
 									a(href=image.url, data-fancybox='images')
 										img(src=image.url).img-rounded
 			else
+				.btn-group
+					a.btn.btn-default(href='/products', class=!data.category ? 'active' : false, role="button").list-group-item All Categories
+					each cat in data.categories
+						a.btn.btn-default(href='/products/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false, role="button").list-group-item= cat.name
+
 				h3.text-muted There are no image galleries yet.
 		
