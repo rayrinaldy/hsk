@@ -6652,17 +6652,6 @@ nav {
     @media (max-width: 599px) {
       .article-wrapper .article-content p {
         font-size: 16px !important; } }
-  .article-wrapper .article-content p span {
-    font-size: 20px !important;
-    line-height: 1.5; }
-    @media (max-width: 767px) {
-      .article-wrapper .article-content p span {
-        font-size: 18px !important; } }
-    @media (max-width: 599px) {
-      .article-wrapper .article-content p span {
-        font-size: 16px !important; } }
-    .article-wrapper .article-content p span:first-letter {
-      color: red !important; }
   .article-wrapper .article-content p:first-child:first-letter {
     color: #903;
     float: left;

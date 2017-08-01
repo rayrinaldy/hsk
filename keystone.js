@@ -37,6 +37,9 @@ keystone.init({
 	'wysiwyg override toolbar': false,
 	'wysiwyg menubar': true,
 	'wysiwyg skin': 'lightgray',
+	'wysiwyg additional options' : {
+		forced_root_block: false
+	},
 	// 'wysiwyg additional plugins': 'image',
   	// 'wysiwyg additional buttons': 'image',
 	// 'wysiwyg images': true,
