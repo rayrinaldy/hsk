@@ -225,14 +225,13 @@ nav{
       background: #1B2030 url('../images/about.jpg') bottom center no-repeat;
     }
   }
-  .info{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  
   .post-project-detail{
     flex: 0 0 auto;
-    width: 100%;
+    width: 50%;
+    @include bp(max-sm){
+      width: 100%;
+    }
     position: absolute;
     bottom: 40px;
     .icons{
@@ -307,16 +306,16 @@ nav{
   flex: 0 0 auto;
   width: 50%;
   width: 100%;
-  // padding: 15% 10% 0 10%;
-  // padding-top: 130px;
+  padding: 15% 10% 0 10%;
+  padding-top: 130px;
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-  // @include bp(min-xsm){
-  //   padding-top: 100px;
-  // }
-  // @include bp(min-sm){
-  //   padding-top: 120px;
-  // }
+  @include bp(min-xsm){
+    padding-top: 100px;
+  }
+  @include bp(min-sm){
+    padding-top: 120px;
+  }
   h1{
     font-weight: bold;
     @include bp(max-sm){
@@ -329,6 +328,12 @@ nav{
 
   &.not-home{
     padding-top: 100px;
+  }
+  &.info-article{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-top: 0;
   }
 }
 
@@ -961,6 +966,7 @@ $L:     1170px;
 
   .article-content{
     padding: 10px;
+    padding-top: 40px;
     p{
       font-size: 20px !important;
       line-height: 1.5;

@@ -6133,15 +6133,14 @@ nav {
     z-index: -2; }
     .header .bg-image.other-bg {
       background: #1B2030 url("../images/about.jpg") bottom center no-repeat; }
-  .header .info {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); }
   .header .post-project-detail {
     flex: 0 0 auto;
-    width: 100%;
+    width: 50%;
     position: absolute;
     bottom: 40px; }
+    @media (max-width: 767px) {
+      .header .post-project-detail {
+        width: 100%; } }
     .header .post-project-detail .icons img {
       padding-bottom: 5px; }
     .header .post-project-detail .icons .detail-text {
@@ -6187,8 +6186,16 @@ nav {
   flex: 0 0 auto;
   width: 50%;
   width: 100%;
+  padding: 15% 10% 0 10%;
+  padding-top: 130px;
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); }
+  @media (min-width: 600px) {
+    .info {
+      padding-top: 100px; } }
+  @media (min-width: 768px) {
+    .info {
+      padding-top: 120px; } }
   .info h1 {
     font-weight: bold; }
     @media (max-width: 767px) {
@@ -6198,6 +6205,11 @@ nav {
     font-size: 1em; }
   .info.not-home {
     padding-top: 100px; }
+  .info.info-article {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-top: 0; }
 
 .author {
   display: inline-block;
@@ -6629,7 +6641,8 @@ nav {
     font-weight: 500; }
 
 .article-wrapper .article-content {
-  padding: 10px; }
+  padding: 10px;
+  padding-top: 40px; }
   .article-wrapper .article-content p {
     font-size: 20px !important;
     line-height: 1.5; }
