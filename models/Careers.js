@@ -16,14 +16,14 @@ Careers.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 	// heroImage: { type: Types.CloudinaryImage },
-	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+	job: {
+		about: { type: Types.Html, wysiwyg: true, height: 150 },
+		requirement: { type: Types.Html, wysiwyg: true, height: 400 },
 	}
 });
 
 Careers.schema.virtual('content.full').get(function () {
-	return this.content.extended;
+	return this.job.about || this.job.requirement;
 });
 
 Careers.defaultColumns = 'name, state|20%, author|20%, publishedDate|20%';

@@ -4,31 +4,78 @@ block var
 	//- Meta tags property
 	- var title = "Projects | Hegar Sumber Kreasi"
 	- var description = "We are an Indonesian company started in 1990 based in Bandung and we cover all areas of the Indonesia with a wide customer base. Our staff have experience to provide steel services to the Construction Industry"
-	- var author = 'Ray Rinaldy'
 	- var keywords = 'indonesia, company, indonesia, company'
 
 block js
 	script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
+	script.
+		var prev = 500;
+		var nav = $('nav');
+		var $window = $(window);
+		$window.on('scroll', function(){
+		  var scrollTop = $window.scrollTop();
+		  nav.toggleClass('animate', scrollTop > prev);
+		  prev = scrollTop;
+		});
 
+block css
+	link(href="/styles/font-awesome.min.css", rel="stylesheet")
 
 block content
-	.header.not-home
-		.info.not-home
-				
+	.header
+		.bg-image
+		.info
 			h1= data.post.title
 
-	section.content
+			h5.text-center Posted 
+				//- if data.post.publishedDate
+				//- 	| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+				if data.post.categories && data.post.categories.length
+					| in 
+					each cat, cat_i in data.post.categories
+						a(href='/projects/' + cat.key)= cat.name
+						if cat_i < data.post.categories.length - 1
+							| , 
+						else
+							|  
+				if data.post.author
+					| by #{data.post.author.name.first}
+
+		.post-project-detail.text-center
+			.row
+				.col-sm-8.col-sm-offset-2
+					.row
+						.col-xs-4
+							.icons.published-date
+								img(src="/images/calendar.png", alt="")
+								if data.post.publishedDate
+									.detail-text #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+								else
+									.detail-text N/A
+						.col-xs-4
+							.location-detail.icons
+								img(src="/images/maps-and-flags.png", alt="")
+								if data.post.project.location
+									.detail-text= data.post.project.location
+								else
+									.detail-text N/A
+						.col-xs-4
+							.status.icons
+								img(src="/images/check-mark.png", alt="")
+								.detail-text= data.post.project.status
+
+	section.content.article-wrapper
 		article
-			p: a(href='/projects') &larr; back to projects
-			hr
+			//- p: a(href='/projects') &larr; back to projects
+			//- hr
 			if !data.post
 				h2 Invalid Post.
 			else
 				.row
-					.col-md-9
-						header
-							h2= data.post.title
-							h5 Posted 
+					.col-md-8.col-md-offset-2
+						//- header
+							//- h2.not-home.text-center= data.post.title
+							h5.text-center Posted 
 								if data.post.publishedDate
 									| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
 								if data.post.categories && data.post.categories.length
@@ -41,18 +88,97 @@ block content
 											|  
 								if data.post.author
 									| by #{data.post.author.name.first}
-						.post-project-detail
-							.location-detail= data.post.project.location
-							.status= data.post.project.status
+
+						//- .post-project-detail.text-center
+							.row
+								.col-sm-10.col-sm-offset-1
+									.row
+										.col-xs-6
+											.location-detail.icons
+												img(src="/images/maps-and-flags.png", alt="")
+												.detail-text= data.post.project.location
+										.col-xs-6
+											.status.icons
+												img(src="/images/check-mark.png", alt="")
+												.detail-text= data.post.project.status
+							
 						.post
+							.article-content!= data.post.content.extended
 							if data.post.image.exists
 								.image-wrap.text-center: img(src=data.post._.image.fit(750,450)).img-responsive.img-rounded.d-inline-block
-							!= data.post.content.full
 
-					.col-md-3
-						.share-article
-						
-						a.twitter-share-button(href='https://twitter.com/share', data-text!=data.post.title, data-hashtags="", data-show-count='false', onclick="window.open(this.href, 'width=550,height=235');return false;") Tweet
+						hr
 
-						.fb-share-button(data-href='http://www.your-domain.com/your-page.html', data-layout='button_count')
+						.article-sharing.text-center
+							h3.share-title Share this Article
+
+							.social
+								a.link.facebook(href='https://facebook.com/rayrinaldy', target='_parent')
+									span.fa.fa-facebook-square
+								a.link.twitter(href='https://twitter.com/ray_r9', target='_parent')
+									span.fa.fa-twitter
+								a.link.google-plus(href='https://plus.google.com/rayrinaldy', target='_parent')
+									span.fa.fa-google-plus-square
+
+	script.
+		var image = !{JSON.stringify(data.post.image.url)};
+		var bgImage = document.getElementsByClassName("bg-image")[0];
+		var imageLoad = `url('${image}') top center no-repeat !important`;
+
+		bgImage.setAttribute("style", "background: #1B2030 " + imageLoad);
+
+					//- .row
+					//- 	.col-md-9
+					//- 		header
+					//- 			h2.not-home.text-center= data.post.title
+					//- 			h5.text-center Posted 
+					//- 				if data.post.publishedDate
+					//- 					| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+					//- 				if data.post.categories && data.post.categories.length
+					//- 					| in 
+					//- 					each cat, cat_i in data.post.categories
+					//- 						a(href='/projects/' + cat.key)= cat.name
+					//- 						if cat_i < data.post.categories.length - 1
+					//- 							| , 
+					//- 						else
+					//- 							|  
+					//- 				if data.post.author
+					//- 					| by #{data.post.author.name.first}
+
+					//- 		.post-project-detail.text-center
+					//- 			.row
+					//- 				.col-sm-10.col-sm-offset-1
+					//- 					.row
+					//- 						.col-xs-6
+					//- 							.location-detail.icons
+					//- 								img(src="/images/maps-and-flags.png", alt="")
+					//- 								.detail-text= data.post.project.location
+					//- 						.col-xs-6
+					//- 							.status.icons
+					//- 								img(src="/images/check-mark.png", alt="")
+					//- 								.detail-text= data.post.project.status
+								
+					//- 		.post
+					//- 			if data.post.image.exists
+					//- 				.image-wrap.text-center: img(src=data.post._.image.fit(750,450)).img-responsive.img-rounded.d-inline-block
+					//- 			.article-content!= data.post.content.full
+
+					//- 	.col-md-3
+					//- 		script.
+					//- 			function fbShare(url, title, descr, image, winWidth, winHeight) {
+					//- 				var winTop = (screen.height / 2) - (winHeight / 2);
+					//- 				var winLeft = (screen.width / 2) - (winWidth / 2);
+					//- 				window.open('https://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+					//- 			}
+					//- 			var post = !{JSON.stringify(data.post)};
+
+					//- 		.share-article.text-center
+					//- 			h3.share-title Share this Article
+					//- 			hr
+							
+					//- 		a.fa.fa-facebook(href="javascript:fbShare('/projects/post/' + post.slug, post.title, post.content.brief, post.image.url, 520, 350)")
+							
+					//- 		a.twitter-share-button(href='https://twitter.com/share', data-text!=data.post.title, data-hashtags="", data-show-count='false', onclick="window.open(this.href, 'width=550,height=235');return false;") Tweet
+
+					//- 		.fb-share-button(data-href='http://www.your-domain.com/your-page.html', data-layout='button_count')
 

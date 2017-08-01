@@ -14,7 +14,7 @@ html
 		if typeof data.post === 'undefined' || data.post === null
 			meta(name='description', content!=description)
 			meta(name='keywords', content!=keywords)
-			meta(name='author', content!=author)
+			//- meta(name='author', content!=author)
 			//- Schema.org markup for Google+
 			meta(itemprop='name', content!=title)
 			meta(itemprop='description', content!=description)
@@ -36,7 +36,7 @@ html
 			meta(property='og:url', content='http://www.rayrinaldy.com/')
 			meta(property='og:image', content='/images/logo.png')
 			meta(property='og:description', content!=description)
-			meta(property='og:site_name', content!=description)
+			meta(property='og:site_name', content="Hegar Sumber Kreasi")
 			meta(property='article:published_time', content='2017-01-04T05:59:00+08:00')
 			meta(property='article:modified_time', content='2017-01-04T19:08:47+08:00')
 			meta(property='article:section', content='Article Section')
@@ -45,8 +45,10 @@ html
 
 		else
 			meta(name='description', content!=data.post.meta.description || data.post.content.brief)
+			-var finalKeyword = ""
 			each keywords in data.post.categories
-				meta(name='keywords', content!=keywords.name)
+				-finalKeyword += keywords.name + ', '
+			meta(name='keywords', content!= finalKeyword)
 			meta(name='author', content!=data.post.author.name.first + ' ' + data.post.author.name.last)
 			//- Schema.org markup for Google+
 			meta(itemprop='name', content!=data.post.title)
@@ -68,12 +70,12 @@ html
 			meta(property='og:type', content='article')
 			meta(property='og:url', content!=data.post.fullPostUrl)
 			meta(property='og:image', content=data.post._.image.fit(120,120))
-			meta(property='og:description', content!=data.post.meta.description)
-			meta(property='og:site_name', content!=description)
+			meta(property='og:description', content!=detail)
+			meta(property='og:site_name', content="Hegar Sumber Kreasi")
 			meta(property='article:published_time', content!=data.post.publishedDate)
 			meta(property='article:modified_time', content!=data.post.publishedDate)
 			//- meta(property='article:section', content='Article Section')
-			meta(property='article:tag', content!=name)
+			meta(property='article:tag', content='Article Tag')
 			//- meta(property='fb:admins', content='1605949105')
 			
 
@@ -109,6 +111,7 @@ html
 						span.icon-bar
 					a.navbar-brand(href='/') 
 						.brand-title Hegar Sumber Kreasi
+						h1(style="text-indent: -9999px;") Hegar Sumber Kreasi
 						img(src="/images/logo.png", alt="Hegar Sumber Kreasi")
 
 				//- Collect the nav links, forms, and other content for toggling

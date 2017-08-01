@@ -9,18 +9,33 @@ block var
 
 block content
 	.header.not-home
+		.bg-image.other-bg
 		.info.not-home
 				
-			h1 CAREERS
+			h1 CAREERS AT HSK
 	section.content
 		.about-wrapper
-			h2.about-us.text-center.not-home Careers at HSK
+			//- h2.about-us.text-center.not-home Careers at HSK
 			
 			each post in data.posts.results
-				h2!=post.name
-				h3!=post.author.name.first
-				h3 #{post._.publishedDate.format('MMMM Do, YYYY')}
-				p!=post.content.extended
+
+				.career-box
+					.career-header
+						h2.not-home.text-center!=post.name
+						if post.publishedDate
+							h4.text-center(style="padding-top: 10px;") Posted on #{post._.publishedDate.format('MMMM Do, YYYY')}
+					.row
+						.col-sm-6
+							.job-about
+								h3.text-center About the Job
+								p!=post.job.about
+
+						.col-sm-6
+							.job-req
+								h3.text-center Job Requirement
+								p!=post.job.requirement
+
+				//- hr
 			//- p.pd.not-home
 				| We are an Indonesian company started in 1990 based in Bandung and we cover all areas of the Indonesia with a wide customer base. 
 				<br>

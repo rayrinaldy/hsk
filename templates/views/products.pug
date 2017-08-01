@@ -37,6 +37,7 @@ block js
 	
 block content
 	.header.not-home
+		.bg-image.other-bg
 		.info.not-home
 				
 			h1 OUR PRODUCTS
@@ -93,5 +94,5 @@ block content
 					each cat in data.categories
 						a.btn.btn-default(href='/products/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false, role="button").list-group-item= cat.name
 
-				h3.text-muted There are no image galleries yet.
+				h3.text-muted There are no product image yet.
 		
