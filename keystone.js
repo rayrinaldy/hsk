@@ -40,7 +40,7 @@ keystone.init({
 	'wysiwyg additional options' : {
 		forced_root_block: false
 	},
-	// 'wysiwyg additional plugins': 'image',
+	'wysiwyg additional plugins': 'table',
   	// 'wysiwyg additional buttons': 'image',
 	// 'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
