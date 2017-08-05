@@ -6136,6 +6136,8 @@ nav {
     max-height: auto; }
     .header.not-home:before {
       background: #1b2030 url("../images/about.jpg") bottom center no-repeat; }
+  .header.post {
+    max-height: 550px; }
   .header:after {
     position: absolute;
     z-index: -1;

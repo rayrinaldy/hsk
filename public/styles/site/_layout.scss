@@ -250,6 +250,9 @@ nav {
             background: #1b2030 url('../images/about.jpg') bottom center no-repeat;
         }
     }
+    &.post{
+      max-height: 550px;
+    }
     &:after {
         position: absolute;
         z-index: -1;

@@ -56,7 +56,7 @@ mixin post(post)
 				.project-button: a(href="/projects/post/" + post.slug target="_blank") Read more..
 
 block content
-	.header
+	.header.post
 		.bg-image
 		.info.info-article
 			.span-wrap
@@ -167,7 +167,7 @@ block content
 							if data.posts
 								.blog
 									each post in data.posts.results
-										-console.log(data.post._id === post._id)
+										//- -console.log(data.post._id === post._id)
 
 										+post(post)
 
