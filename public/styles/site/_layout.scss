@@ -46,6 +46,9 @@ nav {
     border-bottom: 0;
     background-color: #1f2224;
     .navbar-brand {
+      @include bp(max-sm){
+        padding: 15px 10px;
+      }
         .brand-title {
             margin-left: 80px;
 
@@ -450,6 +453,11 @@ nav {
         padding: 30px 0;
 
         background: rgba(0, 0, 0, .4);
+
+        @include bp(max-sm){
+          width: 100%;
+          padding: 20px 0;
+        }
     }
     .btn-navigate {
       padding-top: 40px;
@@ -477,12 +485,19 @@ nav {
     }
     &.not-home {
         padding-top: 120px;
+        @include bp(max-sm){
+          padding-top: 90px;
+        }
     }
     &.info-article {
         position: absolute;
         top: 50%;
 
         padding-top: 0;
+
+        @include bp(max-sm){
+          top: 35%;
+        }
 
         transform: translateY(-50%);
         h1 {

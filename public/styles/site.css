@@ -6005,6 +6005,9 @@ nav {
   margin: 0 auto;
   border-bottom: 0;
   background-color: #1f2224; }
+  @media (max-width: 767px) {
+    .navbar-default .navbar-brand {
+      padding: 15px 10px; } }
   .navbar-default .navbar-brand .brand-title {
     margin-left: 80px;
     text-transform: uppercase;
@@ -6267,6 +6270,10 @@ nav {
     margin: 0 auto;
     padding: 30px 0;
     background: rgba(0, 0, 0, 0.4); }
+    @media (max-width: 767px) {
+      .info .span-wrap {
+        width: 100%;
+        padding: 20px 0; } }
   .info .btn-navigate {
     padding-top: 40px;
     transition: all 1s ease; }
@@ -6289,11 +6296,17 @@ nav {
             margin-bottom: 10px; } }
   .info.not-home {
     padding-top: 120px; }
+    @media (max-width: 767px) {
+      .info.not-home {
+        padding-top: 90px; } }
   .info.info-article {
     position: absolute;
     top: 50%;
     padding-top: 0;
     transform: translateY(-50%); }
+    @media (max-width: 767px) {
+      .info.info-article {
+        top: 35%; } }
     .info.info-article h1 {
       font-size: 3.5em; }
       @media (max-width: 767px) {
