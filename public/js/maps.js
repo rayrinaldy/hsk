@@ -240,7 +240,7 @@ jQuery(document).ready(function($) {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: false,
             styles: style,
-        }
+        };
         //inizialize the map
     var map = new google.maps.Map(document.getElementById('google-container'), map_options);
     //add a custom marker to the map				
@@ -273,7 +273,7 @@ jQuery(document).ready(function($) {
                 // infoWindow.setContent(infoWindowContent[i][0]);
                 // infoWindow.open(map, marker);
                 $('address').html(infoWindowContent[i][0]);
-            }
+            };
         })(marker, i));
 
         // Automatically center the map fitting all markers on the screen
@@ -296,10 +296,10 @@ jQuery(document).ready(function($) {
 
         // Setup the click event listeners and zoom-in or out according to the clicked element
         google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
-            map.setZoom(map.getZoom() + 1)
+            map.setZoom(map.getZoom() + 1);
         });
         google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
-            map.setZoom(map.getZoom() - 1)
+            map.setZoom(map.getZoom() - 1);
         });
     }
 

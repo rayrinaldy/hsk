@@ -13,6 +13,14 @@ $(function() {
         $(".modal:visible").each(alignModal);
     });
 
+    $('.scroll-to').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).attr('href') || $(this).data('target');
+        $('html, body').animate({
+            scrollTop: $(target).offset().top - 80
+        }, 500);
+    });
+
     $('#mainNav').affix({
         offset: {
             top: 100

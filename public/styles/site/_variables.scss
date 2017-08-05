@@ -69,6 +69,15 @@ $font-size-base: 14px;
         }
     }
 }
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+}
+
+@mixin createSecondaryFont() {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+}
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
 * {
@@ -81,7 +90,8 @@ title {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    // font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     overflow: scroll;
     overflow-x: hidden;

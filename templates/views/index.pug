@@ -33,12 +33,19 @@ mixin post(post)
 block content
 	.header
 		.bg-image
-		.info
-			.meta: img.img-responsive(src="images/logo-big.png", alt="")
+		.info.banner-header
+			//- .meta: img.img-responsive(src="images/logo-big.png", alt="")
 				//- a.author(href='https://twitter.com/nodws', target='_b')
 				
 			h1 HEGAR SUMBER KREASI
+			h3 Specialist Tension Membrane &amp; Steel Works 
 			h4 Impossible is Nothing, Respond is Everything
+			
+			.btn-navigate
+				a.btn.btn-default.margin.scroll-to(data-target="#latest-project") Latest Project
+				a.btn.btn-default.margin(href="/products") Products
+				a.btn.btn-default(href="/contact") Contact Us
+
 	section.content
 		h2.about-us About Us
 		p.pd
@@ -49,7 +56,7 @@ block content
 
 		//- hr
 
-		h2.latest-project Latest Project
+		h2.latest-project#latest-project Latest Project
 		p.pd
 			| Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl turpis, porttitor et finibus id, viverra a metus. Praesent non ante sed orci posuere varius quis sit amet dui. Cras molestie magna orci, id gravida dolor molestie in. Duis sollicitudin turpis quis tortor egestas, ut ultrices nisl elementum. Vestibulum sed ipsum eget nulla laoreet cursus in ac sem. Integer a suscipit justo, quis aliquam sapien. Maecenas et tellus nibh. Vivamus tincidunt eros id commodo pellentesque.
 

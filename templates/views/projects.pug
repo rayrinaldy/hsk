@@ -41,6 +41,15 @@ mixin post(post)
                                 span.fa.fa-google-plus
                         a#share.share-toggle.share-icon(href='#')
 
+                    
+
+                    article.card__article
+                        h3
+                            a(href='/projects/post/' + post.slug)= post.title
+                        p!= post.content.brief
+
+                        a.btn.btn-default(href='/projects/post/' + post.slug) Read more
+
                     .card__meta
                         if post.categories && post.categories.length 
                             each cat, i in post.categories
@@ -51,11 +60,6 @@ mixin post(post)
                                     |  
                         if post.publishedDate
                             time #{post._.publishedDate.format('MMMM Do, YYYY')}
-
-                    article.card__article
-                        h3
-                            a(href='/projects/post/' + post.slug)= post.title
-                        p!= post.content.brief
 
                 .card__action
                     .card__author

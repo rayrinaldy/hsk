@@ -32,25 +32,49 @@ block js
 block css
 	link(href="/styles/font-awesome.min.css", rel="stylesheet")
 
+mixin post(post)
+	.col-sm-6.col-md-4
+		.project-wrapper.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
+			.project-img: img.img-responsive(src=post._.image.fit(500,250))
+			.project-title: a(href='/projects/post/' + post.slug)= post.title
+			.project-date Posted 
+				if post.publishedDate
+					| on #{post._.publishedDate.format('MMMM Do, YYYY')}
+				if post.categories && post.categories.length
+					|  in  
+					each cat, i in post.categories
+						a(href='/projects/' + cat.key)= cat.name
+						if i < post.categories.length - 1
+							| , 
+						else
+							|  
+				if post.author
+					|  by #{post.author.name.first}
+
+			.project-detail!= post.content.brief
+			if post.content.extended
+				.project-button: a(href="/projects/post/" + post.slug target="_blank") Read more..
+
 block content
 	.header
 		.bg-image
 		.info.info-article
-			h1= data.post.title
+			.span-wrap
+				h1= data.post.title
 
-			h5.text-center Posted 
-				//- if data.post.publishedDate
-				//- 	| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
-				if data.post.categories && data.post.categories.length
-					| in 
-					each cat, cat_i in data.post.categories
-						a(href='/projects/' + cat.key)= cat.name
-						if cat_i < data.post.categories.length - 1
-							| , 
-						else
-							|  
-				if data.post.author
-					| by #{data.post.author.name.first}
+				h5.text-center Posted 
+					//- if data.post.publishedDate
+					//- 	| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+					if data.post.categories && data.post.categories.length
+						| in 
+						each cat, cat_i in data.post.categories
+							a(href='/projects/' + cat.key)= cat.name
+							if cat_i < data.post.categories.length - 1
+								| , 
+							else
+								|  
+					if data.post.author
+						| by #{data.post.author.name.first}
 
 		.post-project-detail.text-center
 			.row
@@ -119,18 +143,34 @@ block content
 							if data.post.image.exists
 								.image-wrap.text-center: img(src=data.post._.image.fit(750,450)).img-responsive.img-rounded.d-inline-block
 
-						hr
+	
+	.article-sharing.text-center
+		h3.share-title Share this Article
 
-						.article-sharing.text-center
-							h3.share-title Share this Article
+		.social
+			a.link.facebook(href='https://facebook.com/rayrinaldy', target='_parent')
+				span.fa.fa-facebook-square
+			a.link.twitter(href='https://twitter.com/ray_r9', target='_parent')
+				span.fa.fa-twitter
+			a.link.google-plus(href='https://plus.google.com/rayrinaldy', target='_parent')
+				span.fa.fa-google-plus-square
 
-							.social
-								a.link.facebook(href='https://facebook.com/rayrinaldy', target='_parent')
-									span.fa.fa-facebook-square
-								a.link.twitter(href='https://twitter.com/ray_r9', target='_parent')
-									span.fa.fa-twitter
-								a.link.google-plus(href='https://plus.google.com/rayrinaldy', target='_parent')
-									span.fa.fa-google-plus-square
+	.next-article
+		.container-fluid
+			h3.text-center Other Articles
+			.row
+				.col-sm-10.col-sm-offset-1
+					.row
+						if filters.category && !data.category
+							h3.text-muted Invalid Category.
+						else
+							if data.posts
+								.blog
+									each post in data.posts.results
+										-console.log(data.post._id === post._id)
+
+										+post(post)
+
 
 	script.
 		var image = !{JSON.stringify(data.post.image.url)};

@@ -91,6 +91,14 @@ html
 
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
 
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet')
+
+		link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700")
+
+
+
+		
+
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
 			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
@@ -132,7 +140,7 @@ html
 			.container-fluid
 				.row
 					.col-sm-10.col-sm-offset-1
-						hr
+						//- hr
 						.partnership-title In Partnership with
 						.row.slider-parent
 							.col-sm-4.slider-child
@@ -148,12 +156,68 @@ html
 							.col-sm-4.slider-child
 								img.img-responsive(src="http://via.placeholder.com/150x80", alt="")
 							
+		section#postfooter
+			.container
+				.media-container-row
+					.col-12.col-md-3
+						.media-wrap
+							a(href='https://www.hegarsumberkreasi.co.id/')
+								img(src='/images/logo.png', alt='Mobirise', media-simple='true')
+					.col-12.col-md-3.mbr-fonts-style.display-7
+						h5.pb-3
+							| Address
+						p.mbr-text
+							| Jl . Paralon 1 no 1
+							br
+							| Cijerah, Bandung, 
+							br
+							| Indonesia 40214
+					.col-12.col-md-3.mbr-fonts-style.display-7
+						h5.pb-3
+							| Contacts
+						p.mbr-text
+							| Email: hegarsumberkreasi45@yahoo.com
+							br
+							| Phone: (+62) 22 6033815/6
 
+					.col-12.col-md-3.mbr-fonts-style.display-7
+						h5.pb-3
+							| Links
+						p.mbr-text
+							each link in navLinks
+								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+							//- a.text-primary(href='https://mobirise.com/') Website builder
+							//- br
+							//- a.text-primary(href='https://mobirise.com/mobirise-free-win.zip') Download for Windows
+							//- br
+							//- a.text-primary(href='https://mobirise.com/mobirise-free-mac.zip') Download for Mac
+				.footer-lower
+					.media-container-row.mbr-white
+						.col-md-6
+							.social-list.align-right
+								.soc-item
+									a(href='https://twitter.com/mobirise', target='_blank')
+										span.socicon-twitter.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
+								.soc-item
+									a(href='https://www.facebook.com/pages/Mobirise/1616226671953247', target='_blank')
+										span.socicon-facebook.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
+								.soc-item
+									a(href='https://www.youtube.com/c/mobirise', target='_blank')
+										span.socicon-youtube.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
+								.soc-item
+									a(href='https://instagram.com/mobirise', target='_blank')
+										span.socicon-instagram.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
+								.soc-item
+									a(href='https://plus.google.com/u/0/+Mobirise', target='_blank')
+										span.socicon-googleplus.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
+								.soc-item
+									a(href='https://www.behance.net/Mobirise', target='_blank')
+										span.socicon-behance.socicon.mbr-iconfont.mbr-iconfont-social(media-simple='true')
 		#footer 
 			.container-fluid
 				.row
 					.col-md-10.col-md-offset-1
-						.footer-text Copyright© Hegar Sumber Kreasi 2017. All Rights Reserved.
+						.footer-text ©Copyright Hegar Sumber Kreasi 2017. All Rights Reserved.
 
 
 		//- JAVASCRIPT
