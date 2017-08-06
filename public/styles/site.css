@@ -6229,6 +6229,12 @@ nav {
   text-align: center;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   flex: 0 0 auto; }
+  @media (max-width: 767px) {
+    .info {
+      padding: 20% 5% 0 5%; } }
+  @media (max-width: 599px) {
+    .info {
+      padding: 25% 5% 0 5%; } }
   @media (min-width: 600px) {
     .info {
       padding-top: 140px; } }
@@ -6398,7 +6404,7 @@ nav {
 .project-wrapper .project-title {
   font-size: 1.3em;
   font-weight: bold;
-  padding-top: 10px;
+  padding: 10px 0;
   text-align: left;
   text-transform: uppercase; }
   .project-wrapper .project-title a {
@@ -6425,7 +6431,10 @@ nav {
   padding-bottom: 15px; }
 
 .about-wrapper {
-  padding-top: 20px; }
+  padding: 20px 0;
+  padding-bottom: 40px; }
+  .about-wrapper p {
+    font-size: 18px; }
 
 .facilities-section {
   padding-bottom: 40px; }
@@ -6676,6 +6685,9 @@ nav {
 .googleplus:hover {
   color: #eee; }
 
+#maps-section address .info_content h3 {
+  text-align: center !important; }
+
 #maps-section #google-container {
   position: relative;
   width: 100%;
@@ -6742,28 +6754,33 @@ nav {
   background-color: #333;
   display: block;
   margin-bottom: -5px;
-  height: 5px;
-  width: 25.08%;
+  height: 35px;
+  width: calc(100%/3);
   position: relative;
   z-index: 999; }
 
 #maps-section .nav {
   display: table;
-  height: 15%;
+  height: 35px;
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%; }
   #maps-section .nav li {
-    border-left: 1px solid #E5E5E5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
     color: #787878;
     cursor: pointer;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    width: 25%;
+    width: calc(100%/3);
     -webkit-transition: all 0.5s linear;
-    transition: all 0.5s linear; }
+    transition: all 0.5s linear;
+    background: #2d313f;
+    color: #fff; }
+    #maps-section .nav li.active {
+      background: #d36868; }
   #maps-section .nav li:first-child {
     border-left: none; }
 
@@ -6781,8 +6798,20 @@ form .form-group select option {
   min-height: 44px;
   border-radius: 0; }
 
-.btn-primary {
-  background: #c0392b; }
+form .form-actions .btn-default {
+  outline: none;
+  background: #c0392b;
+  border: 0;
+  color: #fff;
+  width: 70%;
+  margin: 0 auto;
+  display: block; }
+  form .form-actions .btn-default:hover {
+    background: #d36868;
+    outline: none; }
+  @media (max-width: 767px) {
+    form .form-actions .btn-default {
+      width: 100%; } }
 
 .article-wrapper h5 a {
   color: #a0294c; }

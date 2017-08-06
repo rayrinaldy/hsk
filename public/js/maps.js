@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
     //set your google maps parameters
     var $latitude = -6.929695,
         $longitude = 107.5665222,
-        $map_zoom = 14,
+        $map_zoom = 18,
         bounds = new google.maps.LatLngBounds();
 
     //google map custom marker icon - .png fallback for IE11
@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
             featureType: "poi",
             elementType: "labels",
             stylers: [{
-                visibility: "off"
+                visibility: "on"
             }]
         }, {
             //don't show highways lables on the map
@@ -324,12 +324,12 @@ jQuery(document).ready(function($) {
 
     $('.maps-nav li').each(function(i, el) {
     	$(this).on('click', function() {
-	        $(this).removeClass('active');
+	        $('.maps-nav li').removeClass('active');
 	        $(this).addClass('active');
 	        var id = $(this).attr('id');
 	        // console.log(id);
 	        // $('#active').animate({
-	        //     'margin-left': $(this).offset().left
+	        //     'margin-left': $(this).offset() - 100
 	        // });
 	        map.panTo(new google.maps.LatLng(markers[i][1], markers[i][2]));
 	        $('address').html(infoWindowContent[i][0]);

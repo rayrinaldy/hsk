@@ -400,6 +400,12 @@ nav {
     text-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 
     flex: 0 0 auto;
+    @include bp(max-sm){
+        padding: 20% 5% 0 5%;
+    }
+    @include bp(max-xsm){
+        padding: 25% 5% 0 5%;
+    }
     @include bp(min-xsm) {
         padding-top: 140px;
     }
@@ -642,7 +648,7 @@ nav {
         font-size: 1.3em;
         font-weight: bold;
 
-        padding-top: 10px;
+        padding: 10px 0;
 
         text-align: left;
         text-transform: uppercase;
@@ -683,7 +689,11 @@ nav {
 // ••••••••••••••••••••••••••••••••//
 
 .about-wrapper {
-    padding-top: 20px;
+    padding: 20px 0;
+    padding-bottom: 40px;
+    p{
+        font-size: 18px;
+    }
 }
 
 .facilities-section {
@@ -1061,6 +1071,14 @@ nav {
   $color-2: #d36868; // red
   $color-3: #ffffff; // white
 
+  address{
+    .info_content{
+        h3{
+            text-align: center !important;
+        }
+    }
+  }
+
 
 
 // rem fallback - credits: http://zerosixthree.se/
@@ -1174,30 +1192,36 @@ nav {
     background-color: #333;
     display: block;
     margin-bottom: -5px;
-    height: 5px;
-    width: 25.08%;
+    height: 35px;
+    width: calc(100%/3);
     position: relative;
     z-index: 999;
   }
 
   .nav {
     display: table;
-    height: 15%;
+    height: 35px;
     list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
     
     li {
-      border-left: 1px solid #E5E5E5;
+      @include createSecondaryFont;
+      // border-left: 1px solid #E5E5E5;
       color: #787878;
       cursor: pointer;
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      width: 25%;
+      width: calc(100%/3);
       -webkit-transition: all 0.5s linear;
       transition: all 0.5s linear;
+      background: $main-text;
+      color: #fff;
+      &.active{
+        background: $link;
+      }
     }
     
     li:first-child {
@@ -1226,10 +1250,24 @@ form{
       }
     }
   }
-}
-
-.btn-primary{
-  background: #c0392b;
+  .form-actions{
+    .btn-default{
+        outline: none;
+        background: #c0392b;
+        border: 0;
+        color: #fff;
+        width: 70%;
+        margin: 0 auto;
+        display: block;
+        &:hover{
+            background: #d36868;
+            outline: none;
+        }
+        @include bp(max-sm){
+            width: 100%;
+        }
+    }
+  }
 }
 
 // ••••••••••••••••••••••••••••••••//

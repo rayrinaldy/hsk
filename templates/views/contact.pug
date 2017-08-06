@@ -13,7 +13,10 @@ block css
 block js
 	script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyClyZrwo6CS1-iYKA8RThC8yPiVpBzKCzo')
 	script(src='/js/maps.js')
+	//- script(src='/js/lib/height.js')
 	//- script(src='/js/lib/mdb.min.js')
+	script.
+		//- $('.info_content p').matchHeight();
 		
 block content
 	.header.not-home
@@ -30,7 +33,7 @@ block content
 						h3.text-center Thanks for getting in touch.
 					else
 						h3.text-center Drop Your Message Here
-						form(method='post')
+						form.contact-form(method='post')
 							input(type='hidden', name='action', value='contact')
 							.form-group(class=validationErrors.name ? 'has-error' : null)
 								label Name
@@ -51,7 +54,7 @@ block content
 								label Message
 								textarea(name='message', placeholder='Leave us a message...' rows=5, required).form-control= formData.message
 							.form-actions
-								button(type='submit').btn.btn-primary.pull-right Send
+								button(type='submit').btn.btn-default Send
 
 						//- form
 							p.h5.text-center.mb-4 Write to us
