@@ -6106,6 +6106,12 @@ nav {
     #postfooter a:hover {
       text-decoration: none;
       color: #bdc3c7; }
+  @media (max-width: 767px) {
+    #postfooter .pd-top-mobile, #postfooter .mbr-fonts-style {
+      padding-top: 20px; } }
+  @media (max-width: 767px) {
+    #postfooter .mbr-fonts-style {
+      padding-top: 10px; } }
 
 #footer {
   margin-top: 0;
@@ -6576,20 +6582,10 @@ nav {
 /* card article */
 .card__article {
   position: relative; }
-  .card__article h3 a:hover {
-    color: #c0392b; }
-  .card__article .btn-default {
-    position: absolute;
-    right: 0;
-    margin-bottom: 10px;
-    color: #fff;
-    border-color: #800300;
-    outline: none;
-    background-color: #800300; }
-    .card__article .btn-default:hover {
-      color: #fff;
-      outline: none;
-      background-color: #c0392b; }
+  .card__article h3 {
+    text-align: left; }
+    .card__article h3 a:hover {
+      color: #c0392b; }
 
 .card__article a {
   transition: all .5s ease;
@@ -6599,6 +6595,17 @@ nav {
     color: #2980b9; }
 
 /* card action */
+.card__author .btn-default {
+  float: right;
+  color: #fff;
+  border-color: #800300;
+  outline: none;
+  background-color: #800300; }
+  .card__author .btn-default:hover {
+    color: #fff;
+    outline: none;
+    background-color: #c0392b; }
+
 .card__action {
   overflow: hidden;
   padding-right: 1.6rem;

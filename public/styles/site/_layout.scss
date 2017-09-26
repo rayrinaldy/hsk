@@ -205,6 +205,17 @@ nav {
             color: #bdc3c7;
         }
     }
+    .pd-top-mobile, .mbr-fonts-style{
+        @include bp(max-sm){
+            padding-top: 20px;
+        }
+    }
+
+    .mbr-fonts-style{
+        @include bp(max-sm){
+            padding-top: 10px;
+        }
+    }
 }
 
 #footer {
@@ -897,26 +908,11 @@ nav {
 .card__article {
     position: relative;
     h3 {
+        text-align: left;
         a {
             &:hover {
                 color: #c0392b;
             }
-        }
-    }
-    .btn-default {
-        position: absolute;
-        right: 0;
-
-        margin-bottom: 10px;
-
-        color: #fff;
-        border-color: #800300;
-        outline: none;
-        background-color: #800300;
-        &:hover {
-            color: #fff;
-            outline: none;
-            background-color: #c0392b;
         }
     }
 }
@@ -932,6 +928,26 @@ nav {
 }
 
 /* card action */
+
+.card__author{
+    .btn-default {
+        // position: absolute;
+        // right: 0;
+
+        // margin-bottom: 10px;
+        float: right;
+
+        color: #fff;
+        border-color: #800300;
+        outline: none;
+        background-color: #800300;
+        &:hover {
+            color: #fff;
+            outline: none;
+            background-color: #c0392b;
+        }
+    }
+}
 
 .card__action {
     overflow: hidden;

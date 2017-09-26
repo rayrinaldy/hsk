@@ -48,17 +48,17 @@ mixin post(post)
                             a(href='/projects/post/' + post.slug)= post.title
                         p!= post.content.brief
 
-                        a.btn.btn-default(href='/projects/post/' + post.slug) Read more
 
                     .card__meta
                         if post.categories && post.categories.length 
+                            | in 
                             each cat, i in post.categories
                                 a(href='/projects/' + cat.key)= cat.name
                                 if i < post.categories.length - 1
                                     | , 
                                 else
                                     |  
-                        if post.publishedDate
+                        //- if post.publishedDate
                             time #{post._.publishedDate.format('MMMM Do, YYYY')}
 
                 .card__action
@@ -67,6 +67,9 @@ mixin post(post)
                         .card__author-content
                             if post.author
                                 | By #{post.author.name.first}
+
+                        a.btn.btn-default.float-right(href='/projects/post/' + post.slug) Read more
+
 
 block content
     .header.not-home
