@@ -78,7 +78,9 @@ keystone.set('nav', {
 	users: 'users',
 });
 
-keystone.set('baseUrl', (keystone.get('env') == 'production') ? 'http://www.hegarsumberkreasi.co.id/' : 'http://localhost:3000/');
+keystone.set('baseUrl', (keystone.get('env') == 'production') ? 'https://www.hegarsumberkreasi.co.id/' : 'http://localhost:3000/');
+
+keystone.set('cloudinary secure', true);
 
 // Start Keystone to connect to your database and initialise the web server
 
