@@ -17,6 +17,9 @@ block js
 	//- script(src='/js/lib/mdb.min.js')
 	script.
 		//- $('.info_content p').matchHeight();
+		$('#sendlead').click(function(){
+			fbq('track', 'Lead');
+		});
 		
 block content
 	.header.not-home
@@ -54,7 +57,7 @@ block content
 								label Message
 								textarea(name='message', placeholder='Leave us a message...' rows=5, required).form-control= formData.message
 							.form-actions
-								button(type='submit').btn.btn-default Send
+								button#sendlead(type='submit').btn.btn-default Send
 
 						//- form
 							p.h5.text-center.mb-4 Write to us
