@@ -18,16 +18,6 @@ block js
 		  prev = scrollTop;
 		});
 
-		$('a.tweet').click(function(e){
-		  //We tell our browser not to follow that link
-		  e.preventDefault();
-		  //We get the URL of the link
-		  var loc = $(this).attr('href');
-		  //We get the title of the link
-		  var title  = escape($(this).attr('title'));
-		  //We trigger a new window with the Twitter dialog, in the middle of the page
-		  window.open('https://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
-		});
 
 block css
 	link(href="/styles/font-awesome.min.css", rel="stylesheet")
@@ -148,12 +138,15 @@ block content
 		h3.share-title Share this Article
 
 		.social
-			a.link.facebook(href='https://facebook.com/rayrinaldy', target='_parent')
+			a.link.facebook(data-href='#', target='_parent')
 				span.fa.fa-facebook-square
-			a.link.twitter(href='https://twitter.com/ray_r9', target='_parent')
+			a.link.twitter(href='#', target='_parent')
 				span.fa.fa-twitter
-			a.link.google-plus(href='https://plus.google.com/rayrinaldy', target='_parent')
-				span.fa.fa-google-plus-square
+			//- a.link.google-plus(href='https://plus.google.com/rayrinaldy', target='_parent')
+			//- 	span.fa.fa-google-plus-square
+
+			//- .fb-like(data-share='true', data-width='450', data-show-faces='true')
+
 
 	.next-article
 		.container-fluid
@@ -178,6 +171,44 @@ block content
 		var imageLoad = `url('${image}') top center no-repeat !important`;
 
 		bgImage.setAttribute("style", "background: #1B2030 " + imageLoad);
+
+		var popupWindowCentre = function(w, h) {
+		wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+		wTop = window.screenTop ? window.screenTop : window.screenY;
+
+		var left = wLeft + (window.innerWidth / 2) - (w / 2);
+		var top = wTop + (window.innerHeight / 2) - (h / 2);
+
+		return { top: top, left: left};
+		};
+
+		$('a.link.tweeter').click(function(e){
+		  //We tell our browser not to follow that link
+		  e.preventDefault();
+		  //We get the URL of the link
+		  var loc = $(this).attr('href');
+		  //We get the title of the link
+		  var title  = escape($(this).attr('title'));
+		  //We trigger a new window with the Twitter dialog, in the middle of the page
+		  window.open('https://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+		});
+
+		$('a.link.facebook').on('click', function(e){
+			e.preventDefault();
+			var $this = $(this),
+				shareUrl = $(this).data('href'),
+				popupWidth = 450,
+				popupHeight  = 500;
+
+			// 1. Open facebook share dialog
+			if(shareUrl!== "") {
+				window.open(
+					shareUrl,
+					'popup',
+					'width=450,height=450,top=' + popupWindowCentre(popupWidth, popupHeight).top + ',left=' + popupWindowCentre(popupWidth, popupHeight).left + ',location=no'
+				);
+			}
+		});
 
 					//- .row
 					//- 	.col-md-9
