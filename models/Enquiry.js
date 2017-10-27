@@ -61,7 +61,7 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			to: admins,
 			from: {
 				name: 'Hegar Sumber Kreasi',
-				email: 'contact@hegarsumberkreasi.co.id',
+				email: 'info@hegarsumberkreasi.co.id',
 			},
 			subject: 'New Enquiry for Hegar Sumber Kreasi',
 			enquiry: enquiry,
