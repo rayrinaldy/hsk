@@ -45,6 +45,8 @@ keystone.init({
 	// 'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
 
+	'port' : process.env.PORT || 9001,
+
 });
 
 // Load your project's Models
