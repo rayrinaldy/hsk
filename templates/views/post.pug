@@ -7,6 +7,7 @@ block var
 	- var keywords = 'indonesia, company, indonesia, company'
 
 block js
+	script(type='text/javascript', src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b655c94cbec8020')
 	script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
 	script.
 		var prev = 500;
@@ -147,7 +148,8 @@ block content
 	.article-sharing.text-center
 		h3.share-title Share this Article
 
-		.social
+		.addthis_inline_share_toolbox
+		//- .social
 			a.link.facebook
 				span.fa.fa-facebook-square
 			a.link.twitter(href='#', target='_parent')
